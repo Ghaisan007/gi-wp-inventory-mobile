@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:gi_wp_inventory/screens/shoplist_form.dart';
+import 'package:gi_wp_inventory/screens/item_list.dart';
 
 class ShopItem {
   final String name;
   final IconData icon;
   final Color color;
   ShopItem(this.name, this.icon, this.color);
+}
+
+class Item {
+  final String name;
+  final int price;
+  final String type;
+  final String description;
+
+  Item ({
+    required this.name,
+    required this.price,
+    required this.type,
+    required this.description
+  });
 }
 
 class ShopCard extends StatelessWidget {
@@ -27,11 +42,20 @@ class ShopCard extends StatelessWidget {
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
           
           // Navigate ke route yang sesuai (tergantung jenis tombol)
+          if (item.name == "Lihat Produk") {
+            Navigator.push(
+              context, 
+              MaterialPageRoute(
+                builder: (context) => const ItemsPage(),
+              )
+            );
+          }
+
           if (item.name == "Tambah Produk") {
             Navigator.push(
               context, 
               MaterialPageRoute(
-                builder: (context) => ShopFormPage(),
+                builder: (context) => const ShopFormPage(),
               )
             );
           }

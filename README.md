@@ -6,11 +6,12 @@ __Kelas   : PBP A__
 
 
 
-Program ini didesain untuk membuat sebuah _Weapon Inventory_ untuk game Genshin Impact dalam mobile. 
+Program ini didesain untuk membuat sebuah _Weapon Inventory_ untuk game Genshin Impact dalam mobile app berbasis framework _Flutter_. 
 
 Berikut adalah shortcut untuk tugas :
 
 - [Tugas 7](#tugas-7)
+- [Tugas 8](#tugas-8)
 
 #  Tugas 7
 
@@ -172,3 +173,390 @@ class ShopCard extends StatelessWidget {
   }
 }
 ```
+
+# Tugas 8
+
+## Jelaskan perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()`, disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+
+Dalam konteks pengembangan perangkat lunak menggunakan Flutter, `Navigator` adalah bagian dari Flutter framework yang digunakan untuk mengelola tumpukan halaman (page stack) dalam aplikasi. Dua metode yang disebutkan, `Navigator.push()` dan `Navigator.pushReplacement()`, memiliki perbedaan dalam cara mereka memanipulasi tumpukan (stack) halaman.
+
+Perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()` adalah sebagai berikut :
+1. **Method `push()`**: menambahkan suatu _route_ ke dalam stack _route_ yang dikelola oleh `Navigator`. Method ini menyebabkan _route_ yang ditambahkan berada pada paling atas stack, sehingga _route_ yang baru saja ditambahkan tersebut akan muncul dan ditampilkan kepada pengguna.
+- Contoh penggunaan :
+```dart
+// Contoh 1: Menambahkan halaman baru ke tumpukan halaman
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => MyNewPage()),
+);
+// Contoh 2: Menambahkan halaman baru dengan membawa data
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => DetailPage(data: myData)),
+);
+```
+2. **Method `pushReplacement()`**: menghapus _route_ yang sedang ditampilkan kepada pengguna dan menggantinya dengan suatu _route_. Method ini menyebabkan aplikasi untuk berpindah dari _route_ yang sedang ditampilkan kepada pengguna ke suatu _route_ yang diberikan. Pada stack _route_ yang dikelola `Navigator`, _route_ lama pada atas stack akan digantikan secara langsung oleh _route_ baru yang diberikan tanpa mengubah kondisi elemen stack yang berada di bawahnya.
+- Contoh penggunaan :
+```dart
+// Contoh 1: Menggantikan halaman saat ini dengan halaman baru
+Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(builder: (context) => MyReplacementPage()),
+);
+// Contoh 2: Menggantikan halaman dengan membawa data
+Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(builder: (context) => UpdatedPage(data: newData)),
+);
+```
+
+## Jelaskan masing-masing _layout widget_ pada Flutter dan konteks penggunaannya masing-masing!
+
+Dalam Flutter, terdapat beberapa layout widget yang digunakan untuk mengatur tata letak (layout) dari elemen-elemen interface pengguna. Berikut adalah beberapa layout widget utama beserta konteks penggunaannya:
+1. **Container** : widget dasar yang digunakan untuk mengatur tata letak dan dekorasi suatu elemen. Digunakan ketika perlu mengelompokkan widget lain, menentukan _height_ dan _width_, serta memberikan _decoration_.
+2. **Row dan Column** : widget yang mengatur elemen-elemen secara horizontal (Row) atau vertikal (Column). Digunakan untuk menyusun widget secara berurutan sesuai kolom atau baris yang diinginkan.
+3. **ListView** : widget yang digunakan untuk membuat daftar elemen yang dapat di-scroll. Digunakan untuk menampilkan daftar panjang elemen, seperti daftar kontak atau pesan.
+4. **GridView** : membuat tata letak elemen dalam bentuk grid. Digunakan ketika ingin menampilkan elemen dalam grid, seperti galeri gambar atau papan permainan.
+5. **Stack** : membuat penumpukan widget di atas satu sama lain. Digunakan untuk menyusun widget secara tumpukan, seperti _overlay_ elemen atau menempatkan elemen-elemen di atas gambar latar belakang.
+6. **Expanded dan Flexible** : digunakan untuk memberikan proporsi ruang kepada widget dalam `Row`, `Column`, atau `Flex`. Berguna untuk memberikan proporsi ruang yang dinamis, terutama dalam situasi di mana elemen-elemen perlu mengisi ruang yang tersedia secara fleksibel.
+
+## Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+
+- Pada tugas kali ini, elemen input pada form yang digunakan adalah `TextField`.
+`TextField` adalah widget dalam Flutter yang digunakan untuk membuat elemen input teks atau string dalam _form_. Widget ini memungkinkan pengguna memasukkan teks melalui _interface_ aplikasi.
+- Kali ini saya menggunakan elemen input `TextField` untuk menerima input nama produk, tipe produk, harga produk, dan deskripsi produk dalam bentuk teks, dimana pengguna bisa dapat langsung menuliskannya ke dalam _text box_ yang tersedia.
+
+## Bagaimana penerapan _clean architecture_ pada aplikasi Flutter?
+
+**_Clean Architecture_** adalah suatu pendekatan arsitektur perangkat lunak yang bertujuan untuk memisahkan kode menjadi lapisan-lapisan terpisah agar lebih mudah dipelihara, diuji, dan dikembangkan. Dalam konteks pengembangan aplikasi Flutter, penerapan _Clean Architecture_ melibatkan pembagian kode menjadi tiga lapisan utama:
+1. **Lapisan Presentasi (_Presentation Layer_)**
+Lapisan ini bertanggung jawab untuk menangani UI, interaksi pengguna, dan presentasi data. Widget-widget Flutter seperti `Widgets`, `Pages`, dan `ViewModels` berada di lapisan ini.
+2. **Lapisan Domain (_Domain Layer_)**
+Lapisan Domain berisi aturan bisnis dan logika aplikasi. Lapisan ini harus bersifat independen dan tidak bergantung pada detail implementasi apapun.
+3. **Lapisan Data (_Data Layer_)**
+Lapisan ini bertanggung jawab untuk mengelola sumber daya eksternal dan mengambil atau menyimpan data. Hal ini melibatkan pemanggilan API, operasi _database_, atau penyimpanan lokal.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+1. Pertama-tama dibuat berkas baru dengan nama `left_drawer.dart` pada direktori baru `widgets`. Kemudian ditambahkan kode sebagai berikut :
+```dart
+import 'package:flutter/material.dart';
+import 'package:shopping_list/menu.dart';
+
+class LeftDrawer extends StatelessWidget {
+  const LeftDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          const DrawerHeader(
+            // Bagian drawer header
+          ),
+          // Bagian routing
+        ],
+      ),
+    );
+  }
+}
+```
+
+2. Selanjutnya dibuat routing untuk ke halaman utama dan halaman tambah produk pada bagian routing dengan kode sebagai berikut :
+```dart
+...
+ListTile(
+  leading: const Icon(Icons.home_outlined),
+  title: const Text('Halaman Utama'),
+  // Bagian redirection ke MyHomePage
+  onTap: () {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MyHomePage(),
+        ));
+  },
+),
+
+ListTile(
+  leading: const Icon(Icons.add_shopping_cart),
+  title: const Text('Tambah Produk'),
+  // Bagian redirection ke ShopFormPage
+  onTap: () {
+    Navigator.pushReplacement(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => ShopFormPage(),
+      )
+    );
+  },
+),
+...
+```
+
+3. Selanjutnya dibuatlah drawer header dengan kode sebagai berikut :
+```dart
+const DrawerHeader(
+  decoration: BoxDecoration(
+    color: Colors.indigo,
+  ),
+  child: Column(
+    children: [
+      Text(
+        'Shopping List',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+      Padding(padding: EdgeInsets.all(10)),
+      Text(
+          "Catat seluruh keperluan belanjamu di sini!",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 15,
+            color: Colors.white,
+            fontWeight: FontWeight.normal
+          ),
+        ),
+    ],
+  ),
+),
+```
+
+4. Setelah dibuat left drawer, maka masukkan drawer tersebut ke halaman `menu.dart` dengan cara tambahkan kode `drawer: const LeftDrawer()` pada `Scaffold`.
+
+5. Selanjutnya untuk membuat form, dibuat berkas baru dengan nama `shoplist_form.dart` pada direktori `lib`. Form ini berfungsi untuk menerima input data `_name`, `_price`, `_type`, dan `_description` yang berupa string dan integer. Berikut adalah kode untuk form :
+```dart
+import 'package:flutter/material.dart';
+import 'package:gi_wp_inventory/widgets/left_drawer.dart';
+
+class ShopFormPage extends StatefulWidget {
+    const ShopFormPage({super.key});
+
+    @override
+    State<ShopFormPage> createState() => _ShopFormPageState();
+}
+
+class _ShopFormPageState extends State<ShopFormPage> {
+    final _formKey = GlobalKey<FormState>();
+    String _name = "";
+    int _price = 0;
+    String _type = "";
+    String _description = "";
+
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Center(
+              child: Text(
+                'Form Tambah Produk',
+              ),
+            ),
+            backgroundColor: Colors.indigo,
+            foregroundColor: Colors.white,
+          ),
+          drawer: LeftDrawer(),
+
+          body: Form(
+            key: _formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Nama Produk",
+                        labelText: "Nama Produk",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _name = value!;
+                        });
+                      },
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return "Nama tidak boleh kosong!";
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Harga",
+                        labelText: "Harga",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _price = int.parse(value!);
+                        });
+                      },
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return "Harga tidak boleh kosong!";
+                        }
+                        if (int.tryParse(value) == null) {
+                          return "Harga harus berupa angka!";
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Tipe Produk",
+                        labelText: "Tipe Produk",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _type = value!;
+                        });
+                      },
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return "Tipe tidak boleh kosong!";
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Deskripsi",
+                        labelText: "Deskripsi",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _description = value!;
+                        });
+                      },
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return "Deskripsi tidak boleh kosong!";
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.indigo),
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            ...
+                          }
+                        },
+                        child: const Text(
+                          "Save",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+    }
+}
+```
+
+6. Selanjutnya, untuk memunculkan data, pada `child: ElevatedButton()`, ditambahkan fungsi `showDialog()` pada bagian `onPressed()` dan munculkan widget `AlertDialog`. Kode nya adalah sebagai berikut :
+```dart
+...
+onPressed: () {
+  if (_formKey.currentState!.validate()) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Produk berhasil tersimpan'),
+            content: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                children: [
+                  Text('Nama: $_name'),
+                  Text('Tipe: $_type'),
+                  Text('Harga: $_price'),
+                  Text('Deskripsi: $_description')
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    _formKey.currentState!.reset();
+  }
+},
+...
+```
+
+7. Untuk menambahkan fitur navigasi pada tombol, pada widget `ShopItem` pada berkas `menu.dart` ditambahkan kode sebagai berikut :
+```dart
+...
+// Area responsive terhadap sentuhan
+onTap: () {
+  // Memunculkan SnackBar ketika diklik
+  ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(SnackBar(
+        content: Text("Kamu telah menekan tombol ${item.name}!")));
+  
+  // Navigate ke route yang sesuai (tergantung jenis tombol)
+  if (item.name == "Tambah Produk") {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => ShopFormPage(),
+      )
+    );
+  }
+},
+...
+```
+
+8. Terakhir, dibuat berkas baru dengan nama `shop_card.dart` pada direktori widgets. Lalu dipindahkan isi widget `ShopItem` pada `menu.dart` ke berkas `widgets/shop_card.dart`. Selanjutnya, dibuat folder baru bernama `screens` pada direktori `lib`, lalu dilakukan _refactoring file_ untuk memindahkan `menu.dart` dan `shoplist_form.dart` ke dalam folder `screens`.

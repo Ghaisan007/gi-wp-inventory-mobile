@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gi_wp_inventory/widgets/left_drawer.dart';
+import 'package:gi_wp_inventory/widgets/shop_card.dart';
 
 class ShopFormPage extends StatefulWidget {
     const ShopFormPage({super.key});
@@ -7,6 +8,8 @@ class ShopFormPage extends StatefulWidget {
     @override
     State<ShopFormPage> createState() => _ShopFormPageState();
 }
+
+List<Item> items = [];
 
 class _ShopFormPageState extends State<ShopFormPage> {
     final _formKey = GlobalKey<FormState>();

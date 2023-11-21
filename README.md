@@ -588,14 +588,14 @@ Jika data yang diambil dari JSON perlu diperbarui secara dinamis atau kita memil
 
 ## Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
 
-- **Bagian Flutter (Client)**
+**Bagian Flutter (Client)**
 
 1. **Input Data Akun**
 - Aplikasi Flutter harus memiliki antarmuka pengguna yang memungkinkan pengguna memasukkan informasi akun seperti nama pengguna dan kata sandi.
 2. **Kirim Permintaan Autentikasi ke Server**
 - Ketika pengguna mengirimkan formulir login, aplikasi Flutter perlu mengirimkan permintaan HTTP ke server Django. Ini dapat dilakukan menggunakan pustaka seperti http di Flutter.
 
-- **Bagian Django (Server)**
+**Bagian Django (Server)**
 
 1. **Proses Autentikasi di Server**
 - Di sisi server Django, perlu dilakukan implementasi logika autentikasi. Django menyediakan fungsi dan pustaka bawaan yang dapat digunakan untuk mengelola proses autentikasi. Pastikan untuk menggunakan HTTPS untuk melindungi data autentikasi selama pengiriman.

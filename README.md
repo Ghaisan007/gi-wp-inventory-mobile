@@ -12,6 +12,7 @@ Berikut adalah shortcut untuk tugas :
 
 - [Tugas 7](#tugas-7)
 - [Tugas 8](#tugas-8)
+- [Tugas 9](#tugas-9)
 
 #  Tugas 7
 
@@ -560,3 +561,29 @@ onTap: () {
 ```
 
 8. Terakhir, dibuat berkas baru dengan nama `shop_card.dart` pada direktori widgets. Lalu dipindahkan isi widget `ShopItem` pada `menu.dart` ke berkas `widgets/shop_card.dart`. Selanjutnya, dibuat folder baru bernama `screens` pada direktori `lib`, lalu dilakukan _refactoring file_ untuk memindahkan `menu.dart` dan `shoplist_form.dart` ke dalam folder `screens`.
+
+
+# Tugas 9
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+
+
+## Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+
+
+## Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+
+
+## Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+
+
+## Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+

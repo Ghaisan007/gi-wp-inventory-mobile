@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gi_wp_inventory/screens/detail_product.dart';
 import 'package:gi_wp_inventory/widgets/left_drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -38,7 +39,9 @@ Future<List<Product>> fetchProduct() async {
 Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        title: const Text('Product'),
+          title: const Text('Product'),
+          backgroundColor: Colors.indigo,
+          foregroundColor: Colors.white,
         ),
         drawer: const LeftDrawer(),
         body: FutureBuilder(
@@ -60,31 +63,40 @@ Widget build(BuildContext context) {
                     );
                 } else {
                     return ListView.builder(
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (_, index) => Container(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 12),
-                                padding: const EdgeInsets.all(20.0),
-                                child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                    Text(
-                                    "${snapshot.data![index].fields.name}",
-                                    style: const TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                    ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Text("${snapshot.data![index].fields.amount}"),
-                                    const SizedBox(height: 10),
-                                    Text(
-                                        "${snapshot.data![index].fields.description}")
-                                ],
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (_, index) => InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailProductPage(
+                                product: snapshot.data![index],
+                              ),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          elevation: 3,
+                          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${snapshot.data![index].fields.name}",
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                            ));
-                    }
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }
                 }
             }));
     }

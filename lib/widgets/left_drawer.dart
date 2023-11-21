@@ -18,7 +18,7 @@ class LeftDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Shopping List',
+                  'Weapon Inventory',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -28,7 +28,7 @@ class LeftDrawer extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 Text(
-                    "Catat seluruh keperluan belanjamu di sini!",
+                    "See all of your weapon list in Genshin Impact!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,

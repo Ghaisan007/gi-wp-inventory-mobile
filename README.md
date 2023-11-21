@@ -591,39 +591,30 @@ Jika data yang diambil dari JSON perlu diperbarui secara dinamis atau kita memil
 - **Bagian Flutter (Client)**
 
 1. **Input Data Akun**
-Aplikasi Flutter harus memiliki antarmuka pengguna yang memungkinkan pengguna memasukkan informasi akun seperti nama pengguna dan kata sandi.
+- Aplikasi Flutter harus memiliki antarmuka pengguna yang memungkinkan pengguna memasukkan informasi akun seperti nama pengguna dan kata sandi.
 2. **Kirim Permintaan Autentikasi ke Server**
-Ketika pengguna mengirimkan formulir login, aplikasi Flutter perlu mengirimkan permintaan HTTP ke server Django. Ini dapat dilakukan menggunakan pustaka seperti http di Flutter.
+- Ketika pengguna mengirimkan formulir login, aplikasi Flutter perlu mengirimkan permintaan HTTP ke server Django. Ini dapat dilakukan menggunakan pustaka seperti http di Flutter.
 
 - **Bagian Django (Server)**
 
 1. **Proses Autentikasi di Server**
-Di sisi server Django, perlu dilakukan implementasi logika autentikasi. Django menyediakan fungsi dan pustaka bawaan yang dapat digunakan untuk mengelola proses autentikasi. Pastikan untuk menggunakan HTTPS untuk melindungi data autentikasi selama pengiriman.
+- Di sisi server Django, perlu dilakukan implementasi logika autentikasi. Django menyediakan fungsi dan pustaka bawaan yang dapat digunakan untuk mengelola proses autentikasi. Pastikan untuk menggunakan HTTPS untuk melindungi data autentikasi selama pengiriman.
 2. **Kirim Balasan ke Aplikasi Flutter**
-Setelah Django memproses permintaan autentikasi, server perlu mengirimkan balasan ke aplikasi Flutter. Ini bisa berupa token akses jika autentikasi berhasil atau pesan kesalahan jika gagal.
+- Setelah Django memproses permintaan autentikasi, server perlu mengirimkan balasan ke aplikasi Flutter. Ini bisa berupa token akses jika autentikasi berhasil atau pesan kesalahan jika gagal.
 
 ## Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
 
-1. `ElevatedButton` dan `TextButton`
-Fungsi: Membuat tombol yang dapat diakses oleh _user_, seperti tombol "Login".
-2. `FutureBuilder`
-Fungsi: Memungkinkan penanganan _asynchronous_, misalnya saat melakukan panggilan HTTP ke server untuk autentikasi. `FutureBuilder` membangun widget berdasarkan status future (misalnya, pending, berhasil, gagal).
-3. `Navigator`
-Fungsi: Menangani navigasi antar halaman dalam aplikasi Flutter. Setelah autentikasi berhasil, Navigator dapat digunakan untuk berpindah ke halaman menu atau beranda.
-4. `Scaffold`
-Fungsi: Membuat kerangka dasar untuk interface user, termasuk elemen-elemen seperti `AppBar` dan `body`.
-5. `Column` dan `ListView`
-Fungsi: Mengorganisir widget dalam susunan vertikal. Dapat digunakan untuk menyusun elemen-elemen tampilan seperti tombol dan teks secara vertikal.
-6. `Text`
-Fungsi: Menampilkan teks di interface user. Dapat digunakan untuk menampilkan pesan kesalahan atau informasi lainnya.
-7. `ListTile`
-Fungsi: Menampilkan item dalam daftar atau tampilan berbasis daftar. `LisTile` mendukung tampilan avatar di bagian kiri atau kanan. Avatar biasanya digunakan untuk menampilkan gambar profil pengguna atau elemen grafis lainnya.
-8. `SizedBox`
-Fungsi: Menentukan dimensi tetap (lebar dan tinggi) dari suatu widget atau ruang di dalam layout.
-9. `TextField`
-Fungsi: Digunakan untuk membuat input teks, seperti kotak masukan untuk username dan password.
-10. `Card`
-Fungsi: Membuat elemen card atau kotak yang memiliki tampilan khusus, biasanya digunakan untuk menampilkan informasi atau konten terkait. Widget ini sering digunakan untuk mengelompokkan informasi bersama dalam interface user.
+1. `ElevatedButton` dan `TextButton`: Membuat tombol yang dapat diakses oleh _user_, seperti tombol "Login".
+2. `FutureBuilder`: Memungkinkan penanganan _asynchronous_, misalnya saat melakukan panggilan HTTP ke server untuk autentikasi. `FutureBuilder` membangun widget berdasarkan status future (misalnya, pending, berhasil, gagal).
+3. `Navigator`: Menangani navigasi antar halaman dalam aplikasi Flutter. Setelah autentikasi berhasil, Navigator dapat digunakan untuk berpindah ke halaman menu atau beranda.
+4. `Scaffold`: Membuat kerangka dasar untuk interface user, termasuk elemen-elemen seperti `AppBar` dan `body`.
+5. `Column` dan `ListView`: Mengorganisir widget dalam susunan vertikal. Dapat digunakan untuk menyusun elemen-elemen tampilan seperti tombol dan teks secara vertikal.
+6. `Text`: Menampilkan teks di interface user. Dapat digunakan untuk menampilkan pesan kesalahan atau informasi lainnya.
+7. `ListTile`: Menampilkan item dalam daftar atau tampilan berbasis daftar. `LisTile` mendukung tampilan avatar di bagian kiri atau kanan. Avatar biasanya digunakan untuk menampilkan gambar profil pengguna atau elemen grafis lainnya.
+8. `SizedBox`: Menentukan dimensi tetap (lebar dan tinggi) dari suatu widget atau ruang di dalam layout.
+9. `TextField`: Digunakan untuk membuat input teks, seperti kotak masukan untuk username dan password.
+10. `Card`: Membuat elemen card atau kotak yang memiliki tampilan khusus, biasanya digunakan untuk menampilkan informasi atau konten terkait. Widget ini sering digunakan untuk mengelompokkan informasi bersama dalam interface user.
 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
 
+1. 
